@@ -2,6 +2,7 @@ package com.example.mylinkopener;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
@@ -23,8 +24,6 @@ public class MainActivity extends AppCompatActivity {
 
         webView = findViewById(R.id.myWebView);
         progressBar = findViewById(R.id.progressBar);
-
-        webView.loadUrl("https://nulms.namal.edu.pk/");
 
         webView.setWebViewClient(new WebViewClient(){
             @Override
@@ -50,6 +49,13 @@ public class MainActivity extends AppCompatActivity {
                 progressBar.setProgress(newProgress);
             }
         });
+
+        Intent intent = getIntent();
+        if(intent != null){
+            String URL = intent.getData().toString();
+            webView.loadUrl(URL);
+        }
+
     }
 
 
